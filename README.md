@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
+Run the project:
+Step:1: ng serve
+Step:2: Open the project in browser with "localhost:<port_number>click on "Region" (left side top corner)so the main page will be open.
+Step:3: Not you can see there are two region(Europe and Asia), click on any one, the list of countries name will disply , click on any country name ti will open the details of country in same row.
+Step:4: You can toggle(show, hide) all clickable item(region, country)

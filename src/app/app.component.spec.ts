@@ -26,10 +26,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('region-countries-ui-test');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('region-countries-ui-test app is running!');
-  });
 });

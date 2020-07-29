@@ -1,0 +1,49 @@
+﻿<div class="container-fluid">
+    <div class="row" *ngIf="(regionsState$|async)?.regions?.length > 0">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Capital</th>
+                        <th>Population</th>
+                        <th>Currencies</th>
+                        <th>Flag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let region of (regionsState$|async)?.regions; let i = index">
+                        <tr>
+                            <td class="text-left td-table-region" *ngIf="!region.expanded">
+                                <span (click)="getCountries(region)">&#9658;{{region.name}}</span>
+                            </td>
+                            <td class="text-left td-table-region" *ngIf="region.expanded">
+                                <span type="button" (click)="collapse(region)">&#9660;{{region.name}}</span>
+                            </td>
+                            
+                            <td class="td-table-region">&#160;</td>
+                            <td class="td-table-region">&#160;</td>
+                            <td class="td-table-region">&#160;</td>
+                            <td class="td-table-region">&#160;</td>
+                        </tr>
+                        <ng-container *ngIf="region.expanded">
+                            <tr><th>Countries</th></tr>
+                            <tr *ngFor="let country of region.countries; let j = index">
+                                <td *ngIf="!country.expanded" (click)="getCountyDetails(region, j)"  class="td-table-country">{{country.name}}</td>
+                                <td *ngIf="country.expanded" type="button" (click)="hideCountyDetails(region, j)"  class="td-table-country">{{country.name}}</td>
+                                <td *ngIf="country.expanded" class="td-table-country">{{country.capital}}</td>
+                                <td *ngIf="country.expanded" class="td-table-country">{{country.population}}</td>
+                                <td *ngIf="country.expanded" class="td-table-country"><span *ngFor="let currencie of country.currencies; let k = index">{{currencie.name}}</span></td>
+                                <td *ngIf="country.expanded"><img width="100" [src]="country.flag"></td>
+                            </tr>
+                        </ng-container>
+                    </ng-container>                                         
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="(regionsState$|async)?.regions?.length <= 0">
+        <span>No items found</span>
+    </div>
+</div>
